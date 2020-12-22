@@ -73,138 +73,140 @@ const SignIn = () => {
   );
 
   return (
-    <Container>
-      <AsideContent>
-        <div className="slider-container">
-          <Slider
-            dots
-            arrows={false}
-            infinite
-            autoplay
-            speed={500}
-            slidesToShow={1}
-            slidesToScroll={1}
-          >
-            <div className="carousel-item">
-              <img src={home_background} alt="Illustration" />
-
-              <div>
-                <h4>Marcenas mattis egestas</h4>
-
-                <p>
-                  Erdum et malesuada fames ac ante ileum primmer in faucibus
-                  uspendisse porta.
-                </p>
-              </div>
-            </div>
-
-            <div className="carousel-item">
-              <img src={home_background} alt="Illustration" />
-
-              <div>
-                <h4>Marcenas mattis egestas</h4>
-
-                <p>
-                  Erdum et malesuada fames ac ante ileum primmer in faucibus
-                  uspendisse porta.
-                </p>
-              </div>
-            </div>
-
-            <div className="carousel-item">
-              <img src={home_background} alt="Illustration" />
-
-              <div>
-                <h4>Marcenas mattis egestas</h4>
-
-                <p>
-                  Erdum et malesuada fames ac ante ileum primmer in faucibus
-                  uspendisse porta.
-                </p>
-              </div>
-            </div>
-          </Slider>
-        </div>
-      </AsideContent>
-
-      <Content>
-        <AnimationContainer>
-          <Header>
-            <div>
-              <h2>Invision</h2>
-            </div>
-
-            <h1>Welcome to Invision</h1>
-          </Header>
-
-          <Form data-testid="form-node" onSubmit={handleSubmit}>
-            <FormInput
-              htmlFor="email"
-              className="input_email"
-              hasError={!!emailError}
+    <>
+      <Container>
+        <AsideContent>
+          <div className="slider-container">
+            <Slider
+              dots
+              arrows={false}
+              infinite
+              autoplay
+              speed={500}
+              slidesToShow={1}
+              slidesToScroll={1}
             >
-              Users name or Email
-              <input
-                type="email"
-                placeholder="Enter your user name or email"
-                id="email"
-                name="email"
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  handleInputChange(event, 'email')
-                }
-                value={email}
+              <div className="carousel-item">
+                <img src={home_background} alt="Illustration" />
+
+                <div>
+                  <h4>Marcenas mattis egestas</h4>
+
+                  <p>
+                    Erdum et malesuada fames ac ante ileum primmer in faucibus
+                    uspendisse porta.
+                  </p>
+                </div>
+              </div>
+
+              <div className="carousel-item">
+                <img src={home_background} alt="Illustration" />
+
+                <div>
+                  <h4>Marcenas mattis egestas</h4>
+
+                  <p>
+                    Erdum et malesuada fames ac ante ileum primmer in faucibus
+                    uspendisse porta.
+                  </p>
+                </div>
+              </div>
+
+              <div className="carousel-item">
+                <img src={home_background} alt="Illustration" />
+
+                <div>
+                  <h4>Marcenas mattis egestas</h4>
+
+                  <p>
+                    Erdum et malesuada fames ac ante ileum primmer in faucibus
+                    uspendisse porta.
+                  </p>
+                </div>
+              </div>
+            </Slider>
+          </div>
+        </AsideContent>
+
+        <Content>
+          <AnimationContainer>
+            <Header>
+              <div>
+                <h2>Invision</h2>
+              </div>
+
+              <h1>Welcome to Invision</h1>
+            </Header>
+
+            <Form data-testid="form-node" onSubmit={handleSubmit}>
+              <FormInput
+                htmlFor="email"
+                className="input_email"
+                hasError={!!emailError}
+              >
+                Users name or Email
+                <input
+                  type="email"
+                  placeholder="Enter your user name or email"
+                  id="email"
+                  name="email"
+                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                    handleInputChange(event, 'email')
+                  }
+                  value={email}
+                />
+                <span>{emailError}</span>
+              </FormInput>
+
+              <FormInput
+                htmlFor="password"
+                className="input_password"
+                hasError={passwordError}
+              >
+                Password
+                <input
+                  type="password"
+                  placeholder="Your secret password"
+                  id="password"
+                  name="password"
+                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                    handleInputChange(event, 'password')
+                  }
+                  value={password}
+                />
+                <span>The password field can not be empty</span>
+              </FormInput>
+
+              <a href="forgot">Forgot password?</a>
+
+              <div>
+                <button data-testid="form-btn" type="submit">
+                  Sign in
+                </button>
+              </div>
+            </Form>
+
+            <FooterContainer>
+              <p>
+                <span>Or</span>
+              </p>
+
+              <LoginWithGoogle
+                clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+                buttonText="Sign in with Google"
+                cookiePolicy="single_host_origin"
               />
-              <span>{emailError}</span>
-            </FormInput>
 
-            <FormInput
-              htmlFor="password"
-              className="input_password"
-              hasError={passwordError}
-            >
-              Password
-              <input
-                type="password"
-                placeholder="Your secret password"
-                id="password"
-                name="password"
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  handleInputChange(event, 'password')
-                }
-                value={password}
-              />
-              <span>The password field can not be empty</span>
-            </FormInput>
-
-            <a href="forgot">Forgot password?</a>
-
-            <div>
-              <button data-testid="form-btn" type="submit">
-                Sign in
-              </button>
-            </div>
-          </Form>
-
-          <FooterContainer>
-            <p>
-              <span>Or</span>
-            </p>
-
-            <LoginWithGoogle
-              clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
-              buttonText="Sign in with Google"
-              cookiePolicy="single_host_origin"
-            />
-
-            <div className="create_account">
-              <span>
-                New <b>Invision</b>? <Link to="/signup">Create Account</Link>
-              </span>
-            </div>
-          </FooterContainer>
-        </AnimationContainer>
-      </Content>
-    </Container>
+              <div className="create_account">
+                <span>
+                  New <b>Invision</b>? <Link to="/signup">Create Account</Link>
+                </span>
+              </div>
+            </FooterContainer>
+          </AnimationContainer>
+        </Content>
+      </Container>
+    </>
   );
 };
 

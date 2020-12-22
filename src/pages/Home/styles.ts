@@ -6,22 +6,32 @@ interface FormInputIsErrored {
   hasError: boolean;
 }
 
-const mobileViewPort = '768px';
-const tabletViewPort = '1024px';
+const mobileViewPort = '640px';
+const tabletViewPort = '768px';
+const largeTabletViewPort = '1024px';
 
 const defaultPercentSize = '100%';
 const maxWidth = '300px';
 const imgAsideWidth = '32vw';
-const imgAsideWidthResponsive = '28vw';
+const responsiveWidth = '50%';
+const carouselImgWidth = '75%';
 const pageHeight = '100vh';
 const afterContentHeight = '1px';
 const headerHeight = '100px';
 
 const contentPadding = '2vw 7vw 4vw';
-const contentPaddingResponsive = '7vw';
 const defaultVerticalPaddingSize = '10px';
 const defaultHorizontalPaddingSize = '20px';
 const googleBtnPadding = '3px 15px 0';
+
+const tabletResponsivePadding = '10vw 7vw 0';
+const tabletResponsiveFontSize = '15px';
+const tabletInputResponsiveFontSize = '15px';
+const tabletResponsiveImgWidth = '90%';
+const tabletPFontSize = '18px';
+const tabletResponsiveMarginBottom = '25px';
+const mobileResponsiveImgSize = '45%';
+const mobileResponsivePSize = '16px';
 
 const defaultSizeVerticalMargin = '20px';
 const littleMarginSize = '5px';
@@ -37,8 +47,9 @@ const finishOpacity = '1';
 const btnWidth = '175px';
 const btnHeight = '40px';
 const btnBorderRadius = '20px';
+const sphericalBorderRadius = '20px';
 const btnFontSize = '14px';
-const dotsSize = '10px';
+const dotsSize = '12px';
 
 const paragraphMaxWidth = '400px';
 const sliderMaxWidth = '500px';
@@ -72,6 +83,10 @@ export const Container = styled.div`
   align-items: stretch;
 
   height: ${pageHeight};
+
+  @media (max-width: ${tabletViewPort}) {
+    flex-direction: column;
+  }
 `;
 
 export const Content = styled.main`
@@ -81,8 +96,9 @@ export const Content = styled.main`
 
   color: ${principalColor};
 
-  @media (max-width: ${mobileViewPort}) {
-    padding: ${contentPaddingResponsive};
+  @media (max-width: ${tabletViewPort}) {
+    padding: ${tabletResponsivePadding};
+    height: ${pageHeight};
   }
 `;
 
@@ -94,6 +110,10 @@ export const AnimationContainer = styled.div`
   max-height: ${defaultPercentSize};
 
   animation: ${appearFromRight} 1s;
+
+  @media (max-width: ${tabletViewPort}) {
+    height: ${defaultPercentSize};
+  }
 `;
 
 export const Header = styled.header`
@@ -202,6 +222,14 @@ export const FormInput = styled.label<FormInputIsErrored>`
         display: none;
       `}
   }
+
+  @media (max-width: ${tabletViewPort}) {
+    font-size: ${tabletResponsiveFontSize};
+
+    input {
+      font-size: ${tabletInputResponsiveFontSize};
+    }
+  }
 `;
 
 export const AsideContent = styled.aside`
@@ -255,20 +283,72 @@ export const AsideContent = styled.aside`
   .slick-dots li.slick-active button:before {
     opacity: 1;
     color: ${backgroundTheme};
+    width: 22px;
+    border-radius: 20px;
+
+    transition: width 0.35s ease-in-out;
   }
 
   .slick-dots li button:before {
-    font-size: ${dotsSize};
+    content: '';
+    width: ${dotsSize};
+    height: ${dotsSize};
+    border-radius: ${sphericalBorderRadius};
+    opacity: 0.5;
+    background-color: ${backgroundTheme};
   }
 
-  @media (max-width: ${tabletViewPort}) {
-    img {
-      width: ${imgAsideWidthResponsive};
+  @media (max-width: ${largeTabletViewPort}) {
+    width: ${responsiveWidth};
+
+    div.carousel-item {
+      img {
+        width: ${carouselImgWidth};
+      }
     }
   }
 
-  @media (max-width: ${mobileViewPort}) {
-    display: none;
+  @media (max-width: ${tabletViewPort}) {
+    width: ${defaultPercentSize};
+    height: ${pageHeight};
+
+    div.slider-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: ${defaultPercentSize};
+    }
+
+    div.carousel-item {
+      img {
+        width: ${tabletResponsiveImgWidth};
+        margin-bottom: ${tabletResponsiveMarginBottom};
+      }
+
+      div {
+        margin-bottom: ${defaultVerticalPaddingSize};
+
+        p {
+          font-size: ${tabletPFontSize};
+        }
+      }
+    }
+  }
+
+  @media (max-width: ${mobileViewPort}) and (orientation: landscape) {
+    div.carousel-item {
+      img {
+        width: ${mobileResponsiveImgSize};
+        margin-bottom: ${littleMarginSize};
+      }
+
+      div {
+        p {
+          font-size: ${mobileResponsivePSize};
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 `;
 
